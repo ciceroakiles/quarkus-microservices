@@ -1,7 +1,6 @@
 package com.sample.controller;
 
 import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -22,8 +21,7 @@ import com.sample.service.ProdutoService;
 public class ProdutoController {
     
     @Inject
-    ProdutoService produtoService;
-    //ProdutoRepository produtoRepository;
+    private ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produtoService) {
         this.produtoService = produtoService;
@@ -32,7 +30,6 @@ public class ProdutoController {
     @POST
     @Transactional
     public Response criaProd(Produto produto) throws IOException {
-        //produtoRepository.persist(produto);
         produtoService.index(produto);
         return Response.status(Status.CREATED).entity(produto).build();
     }
@@ -40,7 +37,6 @@ public class ProdutoController {
     @GET
     @Path("/{id}")
     public Produto findById(@PathParam("id") Long id) throws IOException {
-        //return produtoRepository.findById(id);
         return produtoService.get(id.toString());
     }
 }

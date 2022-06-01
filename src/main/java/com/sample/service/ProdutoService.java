@@ -9,26 +9,25 @@ import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;
 import io.vertx.core.json.JsonObject;
 import com.sample.entity.Produto;
+import com.sample.repository.ProdutoRepository;
 
 @ApplicationScoped
 public class ProdutoService {
     
     @Inject
-    RestClient restClient; 
+    private ProdutoRepository produtoRepository;
 
+    // PUT
     public void index(Produto produto) throws IOException {
-        Request request = new Request(
-            "POST",
-            "/produto/catalogo/" + produto.getId()); 
+        Request request = new Request("PUT", "/produto/catalogo/" + produto.getId()); 
         request.setJsonEntity(JsonObject.mapFrom(produto).toString()); 
-        restClient.performRequest(request); 
+        produtoRepository.getResponse(request);
     }
 
+    // GET
     public Produto get(String id) throws IOException {
-        Request request = new Request(
-            "GET",
-            "/produto/catalogo/" + id);
-        Response response = restClient.performRequest(request);
+        Request request = new Request("GET", "/produto/catalogo/" + id);
+        Response response = produtoRepository.getResponse(request);
         String responseBody = EntityUtils.toString(response.getEntity());
         JsonObject json = new JsonObject(responseBody); 
         return json.getJsonObject("_source").mapTo(Produto.class);

@@ -1,14 +1,19 @@
 package com.sample.repository;
 
+import java.io.IOException;
 import javax.enterprise.context.ApplicationScoped;
-
-import com.sample.entity.Produto;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import javax.inject.Inject;
+import org.elasticsearch.client.Request;
+import org.elasticsearch.client.Response;
+import org.elasticsearch.client.RestClient;
 
 @ApplicationScoped
-public class ProdutoRepository implements PanacheRepository<Produto> {
+public class ProdutoRepository {
     
-    public Produto findById(Long id) {
-        return find("id", id).firstResult();
+    @Inject
+    RestClient restClient;
+
+    public Response getResponse(Request request) throws IOException {
+        return restClient.performRequest(request);
     }
 }
