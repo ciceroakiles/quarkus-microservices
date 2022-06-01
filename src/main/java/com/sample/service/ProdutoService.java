@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.Response;
-import org.elasticsearch.client.RestClient;
 import io.vertx.core.json.JsonObject;
 import com.sample.entity.Produto;
 import com.sample.repository.ProdutoRepository;
