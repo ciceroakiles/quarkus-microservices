@@ -58,6 +58,11 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-openapi</artifactId>
     </dependency>
+    <!-- Health check -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
     <!-- Elasticsearch -->
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -67,6 +72,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-search-orm-elasticsearch</artifactId>
     <version>2.9.2.Final</version>
+
 </dependency>
   </dependencies>
   <build>
