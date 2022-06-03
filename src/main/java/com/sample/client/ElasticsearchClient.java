@@ -1,4 +1,4 @@
-package com.sample.repository;
+package com.sample.client;
 
 import java.io.IOException;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,7 +8,7 @@ import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;
 
 @ApplicationScoped
-public class ProdutoRepository {
+public class ElasticsearchClient {
     
     @Inject
     RestClient restClient;
